@@ -10,6 +10,7 @@ COPY . .
 ARG NEXT_PUBLIC_API_URL=http://localhost:8000
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 RUN npm run build
+RUN mkdir -p /app/public && cp -r /app/app/public/. /app/public/ 2>/dev/null || true
 
 FROM node:22-alpine AS runner
 WORKDIR /app
